@@ -1,3 +1,5 @@
+//EJERCICIO 2 -> CALCULADORA
+
 const readline = require("readline");
 // Creamos la interfaz de lectura
 const rl = readline.createInterface({
