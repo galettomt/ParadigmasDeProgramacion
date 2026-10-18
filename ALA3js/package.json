@@ -1,11 +1,11 @@
 {
-  "name": "ala3_v2",
+  "name": "ala3js",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "src/app.js",
+  "main": "app.js",
   "scripts": {
     "start": "node src/app.js"
   },
