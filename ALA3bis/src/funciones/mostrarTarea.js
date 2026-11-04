@@ -1,5 +1,6 @@
 import { prompt } from "../entrada/entrada.js";
 import { detalleTarea } from "./detalleTarea.js";
+import { ESTADOS } from "../tipos/tipos.js";
 
 const mostrarListaTareas = (tareas, estado) => {
   let encontrado = false;
@@ -67,36 +68,36 @@ export const mostrarTarea = (op, tareas) => {
     case 2:
       console.log("Estas son tus tareas PENDIENTES.\n");
 
-      if (mostrarListaTareas(tareas, "p")) {
+      if (mostrarListaTareas(tareas, ESTADOS.p)) {
         console.log("\n¿Deseas ver los detalles de alguna?");
-        seleccionarTarea(tareas, "p");
+        seleccionarTarea(tareas, ESTADOS.p);
       }
 
       break;
     case 3:
       console.log("Estas son todas tus tareas EN CURSO.\n");
 
-      if (mostrarListaTareas(tareas, "e")) {
+      if (mostrarListaTareas(tareas, ESTADOS.e)) {
         console.log("\n¿Deseas ver los detalles de alguna?");
-        seleccionarTarea(tareas, "e");
+        seleccionarTarea(tareas, ESTADOS.e);
       }
 
       break;
     case 4:
       console.log("Estas son todas tus tareas TERMINADAS\n");
 
-      if (mostrarListaTareas(tareas, "t")) {
+      if (mostrarListaTareas(tareas, ESTADOS.t)) {
         console.log("\n¿Deseas ver los detalles de alguna?");
-        seleccionarTarea(tareas, "t");
+        seleccionarTarea(tareas, ESTADOS.t);
       }
 
       break;
     case 5:
       console.log("Estas son todas tus tareas CANCELADAS\n");
 
-      if (mostrarListaTareas(tareas, "CANCELED")) {
+      if (mostrarListaTareas(tareas, ESTADOS.c)) {
         console.log("\n¿Deseas ver los detalles de alguna?");
-        seleccionarTarea(tareas, "CANCELED");
+        seleccionarTarea(tareas, ESTADOS.c);
       }
 
       break;

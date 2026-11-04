@@ -2,19 +2,19 @@
   {
     "titulo": "Estudiar Node.js",
     "descripcion": "Repasar fs.promises y modulos ES",
-    "estado": "p",
+    "estado": "PENDING",
     "creacion": "2026-10-20T14:30:00.000Z",
     "ultimaEdicion": null,
     "vencimiento": "2026-11-15T00:00:00.000Z",
-    "dificultad": "2"
+    "dificultad": 1
   },
   {
     "titulo": "Entregar TP",
     "descripcion": null,
-    "estado": "e",
+    "estado": "IN-PROGRESS",
     "creacion": "2026-10-25T09:00:00.000Z",
     "ultimaEdicion": "2026-10-28T18:10:00.000Z",
     "vencimiento": null,
-    "dificultad": "3"
+    "dificultad": 3
   }
 ]

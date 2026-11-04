@@ -6,8 +6,15 @@ export const ESTADOS = {
 };
 
 export function validarEstado(estado) {
-  return Object.keys(ESTADOS).includes(estado);
+  return Object.values(ESTADOS).includes(estado);
 }
+
+export const NOMBRES_ESTADOS = {
+  PENDING: "Pendiente",
+  "IN-PROGRESS": "En curso",
+  FINISHED: "Terminada",
+  CANCELED: "Cancelada",
+};
 
 export const DIFICULTADES = {
   1: "Facil",
@@ -16,7 +23,7 @@ export const DIFICULTADES = {
 };
 
 export function validarDificultad(dificultad) {
-  return ["1", "2", "3"].includes(dificultad);
+  return [1, 2, 3].includes(dificultad);
 }
 
 export function Tarea(
@@ -40,7 +47,7 @@ export function Tarea(
 }
 
 Tarea.prototype.obtenerEstado = function () {
-  return ESTADOS[this.estado];
+  return NOMBRES_ESTADOS[this.estado];
 };
 Tarea.prototype.obtenerDificultad = function () {
   return DIFICULTADES[this.dificultad];

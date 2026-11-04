@@ -1,5 +1,5 @@
 import { prompt } from "../entrada/entrada.js";
-import { validarEstado, validarDificultad } from "../tipos/tipos.js";
+import { validarDificultad, ESTADOS } from "../tipos/tipos.js";
 
 export const editarTarea = (id, tareas) => {
   let posicion = -1;
@@ -15,6 +15,8 @@ export const editarTarea = (id, tareas) => {
     console.log("ERROR: ID no encontrado");
     return;
   }
+
+  let huboCambios = false;
 
   console.log("\nEstas editando la tarea ", tareas[posicion].titulo);
   console.log(
@@ -33,7 +35,7 @@ export const editarTarea = (id, tareas) => {
       );
     } else {
       tareas[posicion].titulo = nuevNomb.trim();
-      tareas[posicion].ultimaEdicion = new Date().toISOString();
+      huboCambios = true;
     }
   }
 
@@ -41,6 +43,7 @@ export const editarTarea = (id, tareas) => {
 
   if (nuevDesc !== "") {
     tareas[posicion].descripcion = nuevDesc.trim() === null ? "" : nuevDesc;
+    huboCambios = true;
   }
 
   let nuevEstado;
@@ -49,24 +52,30 @@ export const editarTarea = (id, tareas) => {
       "Estado ([P]endiente / [E]n curso / [T]erminada / [C]ancelada): ",
     ).toLowerCase();
 
-    if (nuevEstado !== "" && !validarEstado(nuevEstado)) {
+    if (nuevEstado !== "" && !(nuevEstado in ESTADOS)) {
       console.log("Error: Opcion invalida ");
     }
-  } while (nuevEstado !== "" && !validarEstado(nuevEstado));
+  } while (nuevEstado !== "" && !(nuevEstado in ESTADOS));
 
   if (nuevEstado !== "") {
-    tareas[posicion].estado = nuevEstado.trim() === null ? "" : nuevEstado;
+    tareas[posicion].estado = ESTADOS[nuevEstado];
+    huboCambios = true;
   }
 
   let nuevDif;
   do {
     nuevDif = prompt("Dificultad ([1] / [2] / [3]): ");
-    if (nuevDif !== "" && !validarDificultad(nuevDif)) {
+    if (nuevDif !== "" && !validarDificultad(Number(nuevDif))) {
       console.log("Error: Opcion invalida ");
     }
-  } while (nuevDif !== "" && !validarDificultad(nuevDif));
+  } while (nuevDif !== "" && !validarDificultad(Number(nuevDif)));
   if (nuevDif !== "") {
-    tareas[posicion].dificultad = nuevDif.trim() === null ? "" : nuevDif;
+    tareas[posicion].dificultad = Number(nuevDif);
+    huboCambios = true;
+  }
+
+  if (huboCambios) {
+    tareas[posicion].ultimaEdicion = new Date().toISOString();
   }
 
   console.log("\n¡Datos guardados!");

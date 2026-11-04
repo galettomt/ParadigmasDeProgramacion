@@ -36,7 +36,7 @@ export const crearTarea = (tareas, id) => {
     id,
     nombre,
     desc,
-    "p",
+    ESTADOS.p,
     dificultad,
     fechaCreacion,
     null,
